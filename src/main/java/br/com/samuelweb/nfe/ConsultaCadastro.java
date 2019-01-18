@@ -22,9 +22,10 @@ import br.inf.portalfiscal.www.nfe_400.wsdl.CadConsultaCadastro.CadConsultaCadas
 import br.inf.portalfiscal.www.nfe_400.wsdl.CadConsultaCadastro.rs.CadConsultaCadastro4StubRs;
 
 /**
- * Classe responsavel por Consultar a Situaçao do XML na SEFAZ.
+ * Resposável por consultar o cadastro de contribuinte ICMS
  *
  * @author Samuel Oliveira - samuk.exe@hotmail.com - www.samuelweb.com.br
+ * 
  */
 
 class ConsultaCadastro {
@@ -33,12 +34,38 @@ class ConsultaCadastro {
 	static final String CPF = "CPF";
 
 	/**
-	 * Classe Reponsavel Por Consultar o status da NFE na SEFAZ
-	 *
-	 * @param consCad
-	 * @param valida
-	 * @return
+	 * Efetua a consulta do cadastro de contribuinte ICMS.<br>
+         * 
+         * Este método cria a estrutura do XML de consulta do cadastro, busca a URL de
+         * consulta chamando o método getUrlConsultaCadastro na classe WebServiceUtil
+         * e efetua a consulta chamando <b>stub.consultaCadastro(dadosMsg).</b> Seu
+         * resultado é então retornado em um objeto <b>TRetConsCad</b>.<br>
+         * 
+         * <p>
+         * Para consulta de contribuintes em RS são usados classes específicas.<br>
+         * Se houver um <b>timeout<b> configurado no parâmetro <b>config</b>, ele será
+         * considera do fazer a consulta.
+	 * </p>
+         * 
+         * Ex.:<br>
+         * {@code 
+         * TRetConsCad retorno = Nfe.consultaCadastro(ConstantesUtil.TIPOS.CNPJ, "XXXXXXXXXXXXXX", Estados.SP);
+         * if (retorno.getInfCons().getCStat().equals(StatusEnum.CADASTRO_ENCONTRADO.getCodigo())) {
+         *     retorno.getInfCons().getInfCad().get(0).getXNome());
+         *     retorno.getInfCons().getInfCad().get(0).getCNPJ());
+         *     retorno.getInfCons().getInfCad().get(0).getIE());
+         * }
+         * }
+         * 
+	 * @param config interface com os dados necessários para comunicação com o WebService.
+	 * @param tipo CPF ou CNPJ.
+         * @param cnpjCpf String com o CPF ou CNPJ.
+         * @param estado objeto Estado com o UF da consulta do cadastro.
+	 * @return TRetConsCad objeto com o retorno da consulta.
 	 * @throws NfeException
+         * 
+         * @see WebServiceUtil
+         * @see Estados
 	 */
 
 	static TRetConsCad consultaCadastro(ConfiguracoesNfe config, String tipo, String cnpjCpf, Estados estado)
