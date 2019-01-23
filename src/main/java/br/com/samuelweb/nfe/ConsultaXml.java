@@ -28,12 +28,31 @@ import br.inf.portalfiscal.www.nfe_400.wsdl.NFeConsultaProtocolo.NFeConsultaProt
 class ConsultaXml {
 
 	/**
-	 * Classe Reponsavel Por Consultar o status da NFE na SEFAZ
+	 * Método responsável por consultar o status da NF-e no SEFAZ.<br>
+         * 
+         * <p>
+         * O método monta a estrutura xml de consulta através do objeto TConsSitNFe,
+         * transforma esse objeto em uma String, converte essa String para um objeto
+         * OMElement e passa esse objeto como argumento para o método extraElement
+         * da classe NFeConsultaProtocolo4Stub.NfeDadosMsg.
+         * </p>
+         * 
+         * <p>
+         * Após, será buscado a URL de consulta correta e o método <b>nfeConsultaNF</b>
+         * efetuará a consulta. O retorno será um objeto da classe <b>TRetConsSitNFe</b>
+         * </p>
+         * 
+         * Obs.:</br>
+         * Se houver um <b>timeout<b> configurado no argumento <b>config</b>, ele será
+         * considerado.
 	 *
-	 * @param chave
-	 * @param tipo
-	 * @return
+	 * @param config interface com os dados necessários para comunicação com o WebService.
+	 * @param chave String que representa a chave da NF-e(44 dígitos).
+         * @param tipo ConstantesUtil.NFE ou ConstantesUtil.NFCE.
+	 * @return TRetConsSitNFe objeto de retorno da consulta.
+         * 
 	 * @throws NfeException
+         * 
 	 */
 	static TRetConsSitNFe consultaXml(ConfiguracoesNfe config, String chave, String tipo) throws NfeException {
 
