@@ -100,13 +100,17 @@ public class Nfe {
 	}
 
 	/**
-	 * Classe Reponsavel Por Consultar o retorno da NFE na SEFAZ No tipo Informar
-	 * ConstantesUtil.NFE ou ConstantesUtil.NFCE
+	 * Método para consulta de NF-e através do do número do recibo(campo NRec).
+         * 
+         * O númedo do recibo é retornado quando, no caso de WebServices assíncronos,  
+         * o lote é processado com sucesso e a NF-e aguarda autorização.
 	 *
-	 * @param recibo
-	 * @param tipo
-	 * @return
+	 * @param recibo String que representa o número do recibo.
+	 * @param tipo ConstantesUtil.NFE ou ConstantesUtil.NFCE.
+	 * @return TRetConsReciNFe objeto com o retorno da consulta.
+         * 
 	 * @throws NfeException
+         * 
 	 */
 	public static TRetConsReciNFe consultaRecibo(String recibo, String tipo) throws NfeException {
 
