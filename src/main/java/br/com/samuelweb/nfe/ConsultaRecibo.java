@@ -27,12 +27,24 @@ import br.inf.portalfiscal.www.nfe_400.wsdl.NFeRetAutorizacao.NFeRetAutorizacao4
 class ConsultaRecibo {
 
 	/**
-	 * Metodo Responsavel Por Pegar o Xml De Retorno.
+	 * Retorna  aconsulta pelo número do recibo.</br>
+         * 
+         * <p>
+         * O método monta a estrutura xml de consulta através do objeto TConsReciNFe,
+         * transforma esse objeto em uma String, converte essa String para um objeto
+         * OMElement e passa esse objeto como argumento para o método extraElement
+         * da classe NFeConsultaProtocolo4Stub.NfeDadosMsg.
+         * </p>
+         * 
+         * <p>
+         * Após, será buscado a URL de consulta correta e o método <b>nfeRetAutorizacaoLote</b>
+         * efetuará a consulta. O retorno será um objeto da classe <b>TRetConsReciNFe</b>
+         * </p>
 	 *
-	 * @param tConsReciNFe
-	 * @param valida
-	 * @param tipo
-	 * @return
+	 * @param config interface com os dados necessários para comunicação com o WebService.
+	 * @param recibo String que representa o número do recibo.
+	 * @param tipo ConstantesUtil.NFE ou ConstantesUtil.NFCE.
+	 * @return tConsReciNFe
 	 * @throws NfeException
 	 */
 
