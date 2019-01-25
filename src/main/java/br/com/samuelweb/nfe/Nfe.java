@@ -86,11 +86,11 @@ public class Nfe {
 	/**
 	 * Classe Reponsavel Por Consultar o cadastro do Cnpj/CPF na SEFAZ
 	 *
-	 * @param tipo
-	 * Usar ConsultaCadastro.CNPJ ou ConsultaCadastro.CPF
-	 * @param cnpjCpf
-	 * @param estado
-	 * @return TRetConsCad
+	 * @param tipo ConstantesUtil.NFE ou ConstantesUtil.NFCE.
+	 * @param cnpjCpf o número do CPF ou CNPJ sem ".","-" e "/".
+	 * @param estado objeto Estado com o UF da consulta do cadastro.
+	 * @return TRetConsCad objeto com o retorno da consulta.
+         * 
 	 * @throws NfeException
 	 */
 	public static TRetConsCad consultaCadastro(String tipo, String cnpjCpf, Estados estado) throws NfeException {
