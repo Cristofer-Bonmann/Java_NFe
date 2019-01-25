@@ -44,7 +44,8 @@ class ConsultaRecibo {
 	 * @param config interface com os dados necessários para comunicação com o WebService.
 	 * @param recibo String que representa o número do recibo.
 	 * @param tipo ConstantesUtil.NFE ou ConstantesUtil.NFCE.
-	 * @return tConsReciNFe
+	 * @return TRetConsReciNFe objeto com o retorno da consulta.
+         * 
 	 * @throws NfeException
 	 */
 
