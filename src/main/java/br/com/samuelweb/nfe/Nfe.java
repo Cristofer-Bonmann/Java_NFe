@@ -100,7 +100,7 @@ public class Nfe {
 	}
 
 	/**
-	 * Método para consulta de NF-e através do do número do recibo(campo NRec).
+	 * Método para consulta de NF-e através do número do recibo(campo NRec).
          * 
          * O númedo do recibo é retornado quando, no caso de WebServices assíncronos,  
          * o lote é processado com sucesso e a NF-e aguarda autorização.
@@ -119,15 +119,28 @@ public class Nfe {
 	}
 
 	/**
-	 * Classe Reponsavel Por Inutilizar a NFE na SEFAZ No tipo Informar
-	 * ConstantesUtil.NFE ou ConstantesUtil.NFCE Id = Código da UF + Ano (2
-	 * posições) + CNPJ + modelo + série + número inicial e número final precedida
-	 * do literal “ID”
+         * Método responsável por inutilizar a nota fiscal.<br>
+         * <p>
+         * Inutilizar uma faixa de númeração de nota fiscal é basicamente informar
+         * ao fisco quais numerações não serão utilizadas por razão de 
+         * quebra de sequência. 
+         * </p>
+         * 
+         * <p>
+         * A inutilização só é possível caso a numeração ainda não tenha
+         * sido utilizada em nenhuma NFe (seja ela autorizada, cancelada ou denegada).
+         * </p>
 	 *
-	 * @param id
-	 * @param valida
-	 * @param tipo
-	 * @return
+	 * @param id usado para identificar a faixa de numeração a ser inutilizada.
+         * composto por: Código da UF + Ano (2 posições) + CNPJ + modelo + série
+         * + número inicial e número final precedida do literal "ID".
+	 * @param motivo String com a descrição do motivo da inutilização.
+	 * @param tipo ConstantesUtil.NFE ou ConstantesUtil.NFCE.
+         * @param validar boolean para indicar se a estrutura do XML deve ser 
+         * ou não valida antes de ser enviado para o WebService.
+         * 
+	 * @return TRetInutNFe objeto de retorno da inutilização.
+         * 
 	 * @throws NfeException
 	 */
 	public static TRetInutNFe inutilizacao(String id, String motivo, String tipo, boolean validar) throws NfeException {
@@ -191,7 +204,7 @@ public class Nfe {
 	}
 
 	/**
-	 * * Metodo para Cancelar a NFE. No tipo Informar ConstantesUtil.NFE ou
+	 * Método responsável pelo cancelamento de Nf-e.
 	 * ConstantesUtil.NFCE
 	 *
 	 * @param envEvento
