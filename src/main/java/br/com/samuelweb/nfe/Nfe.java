@@ -69,12 +69,12 @@ public class Nfe {
 	}
 
 	/**
-	 * Classe Reponsavel Por Consultar o status da NFE na SEFAZ No tipo Informar
-	 * ConstantesUtil.NFE ou ConstantesUtil.NFCE
+	 * Método Reponsavel Por Consultar o status da NFE na SEFAZ
 	 *
-	 * @param chave
-	 * @param tipo
-	 * @return TRetConsSitNFe
+	 * @param chave String que representa a chave da NF-e(44 dígitos).
+	 * @param tipo ConstantesUtil.NFE ou ConstantesUtil.NFCE.
+	 * @return TRetConsSitNF objeto de retorno da consulta.
+         * 
 	 * @throws NfeException
 	 */
 	public static TRetConsSitNFe consultaXml(String chave, String tipo) throws NfeException {
